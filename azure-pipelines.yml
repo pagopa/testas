@@ -30,8 +30,8 @@ steps:
       Contents: |
         node_modules/**/*
         dist/**/*
+        public/**/*
         web.config
-        loaderio-e248dc43aa648ce82734cd887c6b1355.txt
       TargetFolder: "$(System.DefaultWorkingDirectory)/deploy"
       CleanTargetFolder: true
       OverWrite: true
