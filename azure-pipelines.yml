@@ -18,7 +18,11 @@ steps:
 - script: |
     yarn install
     yarn build
-  displayName: 'Install and build'
+  displayName: 'Install'
+
+- script: |
+    yarn build
+  displayName: 'Build'
 
 - task: CopyFiles@2
   inputs:
@@ -26,6 +30,7 @@ steps:
     Contents: |
       node_modules/**/*
       dist/**/*
+      web.config
     TargetFolder: '$(System.DefaultWorkingDirectory)/deploy'
     CleanTargetFolder: true
     OverWrite: true
