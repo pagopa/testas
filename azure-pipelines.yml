@@ -20,16 +20,12 @@ steps:
     yarn build
   displayName: 'Install and build'
 
-
-- task: ArchiveFiles@2
+- task: CopyFiles@2
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    includeRootFolder: false
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'DEV-IO(a4e96bcd-59dc-4d66-b2f7-5547ad157c12)'
-    appType: 'webApp'
-    WebAppName: 'io-lab-app-testas'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+      node_modules
+      dist
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
