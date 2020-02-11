@@ -22,6 +22,12 @@ app.get("/headers", (req, res) => {
   });
 });
 
+app.get("/envs", (_, res) => {
+  res.json({
+    APP_SECRET: process.env.APP_SECRET
+  });
+});
+
 app.get("/throw", (_, __) => {
   throw new Error("You call me!");
 });
